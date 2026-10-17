@@ -1,14 +1,32 @@
+# Maven build target directory
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+
+# Compiled class files
 bin/
 *.class
+*.jar
+*.war
+*.nar
+*.ear
+*.zip
+*.tar.gz
+*.rar
 
 # IDE and Editor files
 .idea/
 *.iml
+*.ipr
+*.iws
 .vscode/
 .settings/
 .classpath
 .project
 
-# OS files
+# OS generated files
 .DS_Store
 Thumbs.db
