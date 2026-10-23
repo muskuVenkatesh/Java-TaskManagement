@@ -31,8 +31,20 @@ jobs:
          run: ls -lh target/
 
         #Deploy to Tomcat
-       - name: Deploy war to Tomcat
+       
+       - name: Deploy WAR to Tomcat
+         env:
+           TOMCAT_USER: ${{ secrets.TOMCAT_USER }}
+           TOMCAT_PASSWORD: ${{ secrets.TOMCAT_PASSWORD }}
+           TOMCAT_HOST: ${{ secrets.TOMCAT_HOST }}
          run: |
-                curl -v -u ${{secrets.TOMCAT_USER}}:{{secrets.TOMCAT_PASSWORD}}:{{secrets.TOMCAT_HOST}}
+           WAR_FILE="target/task-manager-1.0.0.war"
+           test -f "$WAR_FILE"
+ 
+           curl --fail-with-body --show-error \
+             --user "$TOMCAT_USER:$TOMCAT_PASSWORD" \
+             --upload-file "$WAR_FILE" \
+             "$TOMCAT_HOST/manager/text/deploy?path=/task-manager&update=true"
+
         
  
