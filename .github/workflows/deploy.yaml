@@ -1,0 +1,4 @@
+name: continuos Integration
+   on:
+    push:
+       branches: main
