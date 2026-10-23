@@ -16,7 +16,7 @@ jobs:
        - name: setup Java
          uses: actions/setup-java@v4
          with:
-           distribution: 'correto'
+           distribution: 'corretto'
            java-version: '21'
 
        - name: validate with maven
