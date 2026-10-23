@@ -1,4 +1,32 @@
-name: continuos Integration
-   on:
-    push:
-       branches: main
+name: deployment
+
+on:
+ push:
+   branches:
+      - main
+jobs:
+  build:
+     name: Build and Test Application
+     runs-on: ubuntu-latest
+
+     steps:
+       - name: checkout source code
+         uses: actions/checkout@v4
+
+       - name: setup Java
+         uses: actions/setup-java@v4
+         with:
+           distribution: 'correto'
+           java-version: '21'
+
+       - name: validate with maven
+         run: mvn validate
+       - name: compile with maven
+         run: mvn compile
+       - name: test with mavem
+         run: mvn test 
+       - name: package with maven
+         run: mvn package
+       - name: verify war file
+         run: ls -lh target/
+ 
