@@ -9,7 +9,7 @@
     <groupId>com.taskmanager</groupId>
     <artifactId>task-manager</artifactId>
     <version>1.0.0</version>
-    <packaging>war</packaging>
+    <packaging>jar</packaging>
 
     <name>Task Management Application</name>
     <description>A simple task management application built with Java and Maven</description>
