@@ -31,6 +31,15 @@
             <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
+        
+         <!-- Jakarta Servlet API provided by Tomcat 11 -->
+         <dependency>
+             <groupId>jakarta.servlet</groupId>
+             <artifactId>jakarta.servlet-api</artifactId>
+             <version>6.1.0</version>
+             <scope>provided</scope>
+         </dependency>
+
     </dependencies>
 
     <!-- Build and Plugin Configuration -->
@@ -66,6 +75,17 @@
                     </archive>
                 </configuration>
             </plugin>
+            
+         <!-- Maven WAR Plugin -->
+         <plugin>
+             <groupId>org.apache.maven.plugins</groupId>
+             <artifactId>maven-war-plugin</artifactId>
+             <version>3.5.1</version>
+             <configuration>
+                 <failOnMissingWebXml>false</failOnMissingWebXml>
+             </configuration>
+         </plugin>
+
 
             <!-- Exec Maven Plugin to run with 'mvn exec:java' -->
             <plugin>
