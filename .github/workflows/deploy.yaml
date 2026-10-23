@@ -29,4 +29,10 @@ jobs:
          run: mvn package
        - name: verify war file
          run: ls -lh target/
+
+        #Deploy to Tomcat
+       - name: Deploy war to Tomcat
+         run: |
+                curl -v -u ${{secrets.TOMCAT_USER}}:{{secrets.TOMCAT_PASSWORD}}:{{secrets.TOMCAT_HOST}}
+        
  
