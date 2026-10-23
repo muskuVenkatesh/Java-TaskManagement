@@ -76,15 +76,7 @@
                 </configuration>
             </plugin>
             
-         <!-- Maven WAR Plugin -->
-         <plugin>
-             <groupId>org.apache.maven.plugins</groupId>
-             <artifactId>maven-war-plugin</artifactId>
-             <version>3.5.1</version>
-             <configuration>
-                 <failOnMissingWebXml>false</failOnMissingWebXml>
-             </configuration>
-         </plugin>
+      
 
 
             <!-- Exec Maven Plugin to run with 'mvn exec:java' -->
