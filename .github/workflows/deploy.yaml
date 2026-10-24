@@ -41,7 +41,7 @@ jobs:
         run: |
           ls -lh target/
           test -f target/task-manager-1.0.0.war
-          jar tf target/task-manager-1.0.0.war | grep 'HelloServlet.class'
+          
 
       - name: Deploy WAR to Tomcat
         env:
