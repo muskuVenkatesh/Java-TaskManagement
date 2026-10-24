@@ -40,7 +40,7 @@ jobs:
       - name: Verify WAR file
         run: |
           ls -lh target/
-          test -f target/task-manager.war
+          test -f target/task-manager-1.0.0.war
           
 
       - name: Deploy WAR to Tomcat
@@ -51,7 +51,7 @@ jobs:
         run: |
           set -eu
 
-          WAR_FILE="target/task-manager.war"
+          WAR_FILE="target/task-manager-1.0.0.war"
 
           if [ ! -f "$WAR_FILE" ]; then
             echo "ERROR: WAR file was not generated."
