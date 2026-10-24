@@ -1,0 +1,104 @@
+package com.taskmanager.web;
+
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.PrintWriter;
+
+/**
+ * Jakarta Servlet for Tomcat 11 serving the Task Management System.
+ * Mapped to both root "/" and "/hello".
+ */
+@WebServlet({"/", "/hello"})
+public class HelloServlet extends HttpServlet {
+
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) 
+            throws IOException {
+        
+        response.setContentType("text/html;charset=UTF-8");
+        
+        try (PrintWriter out = response.getWriter()) {
+            out.println("""
+            <!DOCTYPE html>
+            <html lang="en">
+            <head>
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <title>Task Management System</title>
+                <style>
+                    :root {
+                        --primary: #2563eb;
+                        --primary-hover: #1d4ed8;
+                        --bg: #f8fafc;
+                        --card-bg: #ffffff;
+                        --text: #0f172a;
+                        --text-muted: #64748b;
+                        --border: #e2e8f0;
+                        --success: #10b981;
+                    }
+                    * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+                    body { background-color: var(--bg); color: var(--text); padding: 40px 20px; min-height: 100vh; }
+                    .container { max-width: 700px; margin: 0 auto; }
+                    .card { background: var(--card-bg); border-radius: 12px; border: 1px solid var(--border); padding: 30px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+                    .header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; }
+                    h1 { font-size: 24px; color: #1e293b; }
+                    .badge { background: #dcfce7; color: #15803d; padding: 4px 12px; border-radius: 20px; font-weight: 600; font-size: 13px; }
+                    .subtitle { color: var(--text-muted); font-size: 14px; margin-bottom: 25px; line-height: 1.6; }
+                    .task-list { display: flex; flex-direction: column; gap: 12px; margin-top: 20px; }
+                    .task-item { display: flex; align-items: center; justify-content: space-between; padding: 14px 16px; background: #f1f5f9; border-radius: 8px; border-left: 4px solid var(--primary); }
+                    .task-info { display: flex; flex-direction: column; gap: 4px; }
+                    .task-title { font-weight: 600; font-size: 15px; color: #1e293b; }
+                    .task-tag { font-size: 12px; color: var(--text-muted); }
+                    .task-status { font-size: 12px; font-weight: bold; color: var(--success); }
+                    .footer { text-align: center; margin-top: 30px; color: var(--text-muted); font-size: 13px; }
+                </style>
+            </head>
+            <body>
+                <div class="container">
+                    <div class="card">
+                        <div class="header">
+                            <h1>Task Management System</h1>
+                            <span class="badge">Running on Tomcat 11</span>
+                        </div>
+                        <p class="subtitle">
+                            The application is successfully deployed and operational on AWS EC2 via GitHub Actions CI/CD!
+                        </p>
+                        
+                        <h3>Active Tasks</h3>
+                        <div class="task-list">
+                            <div class="task-item">
+                                <div class="task-info">
+                                    <span class="task-title">Set up AWS EC2 &amp; Apache Tomcat</span>
+                                    <span class="task-tag">Category: DevOps</span>
+                                </div>
+                                <span class="task-status">&#10003; Completed</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-info">
+                                    <span class="task-title">Configure GitHub Actions CI/CD Pipeline</span>
+                                    <span class="task-tag">Category: Automation</span>
+                                </div>
+                                <span class="task-status">&#10003; Completed</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-info">
+                                    <span class="task-title">Deploy Jakarta Servlet Application</span>
+                                    <span class="task-tag">Category: Development</span>
+                                </div>
+                                <span class="task-status">&#10003; Completed</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="footer">
+                        Powered by Apache Tomcat 11 &bull; OpenJDK 17
+                    </div>
+                </div>
+            </body>
+            </html>
+            """);
+        }
+    }
+}
