@@ -51,13 +51,13 @@ mvn test
 ```bash
 mvn clean package
 ```
-*(The packaged JAR is created at `target/task-manager-1.0.0.jar`)*
+*(The packaged JAR is created at `target/task-manager-1.0.0.war`)*
 
 ### 4. Run the Application
 
 #### Option A: Run Packaged JAR
 ```bash
-java -jar target/task-manager-1.0.0.jar
+java -jar target/task-manager-1.0.0.war
 ```
 
 #### Option B: Run via Maven Plugin
